@@ -2,7 +2,7 @@
 export const newsPromise = Promise.resolve(newsFeedData());
 
 export function newsFeedData() {
-  return Array.from({ length: 100 }, (_, idx) => {
+  return Array.from({ length: 20 }, (_, idx) => {
     const shares = Math.floor(Math.random() * 1000);
     const duration = Math.floor(Math.random() * 10);
 

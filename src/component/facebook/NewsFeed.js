@@ -12,9 +12,13 @@ import "./newsfeed.scss";
 const NewsFeed = () => {
   const [newsFeed, setNewsFeed] = React.useState([]);
   const [hasMore, setHasMore] = React.useState(true);
+  const [hasError, setHasError] = React.useState(false);
 
   React.useEffect(() => {
     const news$ = from(newsPromise).subscribe((news) => {
+      if (news.error) {
+        //handle error
+      }
       setNewsFeed(news);
     });
     return () => news$ && news$.unsubscribe();
@@ -23,7 +27,7 @@ const NewsFeed = () => {
     setTimeout(() => {
       setNewsFeed([...newsFeed, ...newsFeedData()]);
       setHasMore(false);
-    }, 1000);
+    }, 2000);
   };
   return (
     <main>

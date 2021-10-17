@@ -7,7 +7,6 @@ const ImageCard = ({ children /*image could be passed*/ }) => {
     <ul className="card">
       <li>
         <img
-          style={{ width: "436px", height: "220px" }}
           src={dummyImage} // this would come from the api resonse but I don't have real links
           alt="dummyImage"
         />
