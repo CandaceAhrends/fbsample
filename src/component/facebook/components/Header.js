@@ -1,9 +1,11 @@
 import React from "react";
 import { AppCtx } from "../../../appContext";
+import moment from "moment";
 import "./header.scss";
 
 const Header = () => {
   const { firstName } = React.useContext(AppCtx);
+  const today = moment();
   return (
     <ul className="header">
       <li>
@@ -12,7 +14,10 @@ const Header = () => {
             Good morning, {firstName} <i className="fas fa-info-circle"></i>
           </h3>
         </span>
-        <span className="header-sub-text">Saturday, October 16, 2021</span>
+
+        <span className="header-sub-text">
+          {today.format("dddd, MMMM DD, YYYY")}
+        </span>
       </li>
     </ul>
   );
