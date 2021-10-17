@@ -1,10 +1,10 @@
 @import "../../../styles.scss";
 .card {
   @include clickable();
-  margin: 0;
+  margin: 0.7rem;
   border-radius: 8px;
   height: auto;
-  padding: 0.5rem;
+  padding: 0;
   background-color: #252526;
 
   li {
