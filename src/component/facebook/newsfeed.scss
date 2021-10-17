@@ -47,3 +47,14 @@ main {
     }
   }
 }
+@media only screen and (max-width: 500px) {
+  main {
+    .news {
+      &-feed {
+        grid-template-columns: 1fr;
+        width: 275px;
+        margin: 0;
+      }
+    }
+  }
+}

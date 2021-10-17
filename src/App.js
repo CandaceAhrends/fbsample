@@ -1,8 +1,9 @@
 import { hot } from "react-hot-loader";
 import React from "react";
 import NewsFeed from "./component/facebook/NewsFeed";
+import { user } from "./api/fetchUser";
 import { AppCtx } from "./appContext";
-
+import { from } from "rxjs";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const theme = createTheme({
@@ -18,15 +19,14 @@ const theme = createTheme({
 
 const App = () => {
   const [userInfo, setUserInfo] = React.useState({});
+
   React.useEffect(() => {
-    setUserInfo({
-      userId: 123,
-      firstName: "Candace",
-      lastName: "Ahrends",
-      permissions: {},
-      lastLogin: null,
+    const user$ = from(user).subscribe((response) => {
+      setUserInfo(response);
     });
+    return () => user$ && user$.unsubscribe();
   }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <AppCtx.Provider value={userInfo}>
